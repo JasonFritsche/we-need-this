@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './modules/material/material.module';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -27,6 +28,7 @@ import { UserEffects } from './store/user/user.effects';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     StoreModule.forRoot({ user: userReducer }),
