@@ -1,1 +1,11 @@
-<p>signup works!</p>
+<form [formGroup]="signUpForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="handleSignUpButtonClick()">Sign Up</button>
+</form>
