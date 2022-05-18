@@ -1,11 +1,90 @@
-<form [formGroup]="signUpForm">
+<app-container class="test-class">
+  <form [formGroup]="signUpForm" fxLayout="column" fxLayoutGap="10px">
     <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input formControlName="password" matInput>
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="handleSignUpButtonClick()">Sign Up</button>
-</form>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput />
+      <mat-error
+        *ngIf="
+          signUpForm.get('email')?.touched &&
+          signUpForm.get('email')?.hasError('required')
+        "
+      >
+        This field is required. Please provide a valid email address.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          signUpForm.get('email')?.touched &&
+          signUpForm.get('email')?.hasError('email')
+        "
+      >
+        This is not a valid email format. Please provide a valid email address.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput />
+      <mat-error
+        *ngIf="
+          signUpForm.get('password')?.touched &&
+          signUpForm.get('password')?.hasError('required')
+        "
+      >
+        This field is required. Please create a password.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          signUpForm.get('password')?.touched &&
+          signUpForm.get('password')?.hasError('minlength')
+        "
+      >
+        Please ensure your password is at least
+        {{form['password']?.errors?.['minlength'].requiredLength}} characters
+        long.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          signUpForm.get('password')?.touched &&
+          signUpForm.get('password')?.hasError('maxlength')
+        "
+      >
+        Please ensure your password does not exceed
+        {{form['password']?.errors?.['maxlength'].requiredLength}} characters.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="verify-password-form-field">
+      <mat-label>Verify Password</mat-label>
+      <input formControlName="verifyPassword" matInput />
+      <mat-error
+        *ngIf="
+          signUpForm.get('verifyPassword')?.touched &&
+          signUpForm.get('verifyPassword')?.hasError('required')
+        "
+      >
+        This field is required. Please verify your password.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          signUpForm.get('verifyPassword')?.touched &&
+          signUpForm.get('verifyPassword')?.hasError('passwordMatchError')
+        "
+      >
+        Passwords do not match.
+      </mat-error>
+    </mat-form-field>
+    <!-- <div class="mat-form-field-subscript-wrapper password-verify-error-wrapper">
+      <div class="mat-form-field-hint-wrapper">
+        <mat-error
+          *ngIf="
+            signUpForm.get('verifyPassword')?.touched &&
+            signUpForm.hasError('passwordMatchError')
+          "
+        >
+          Passwords do not match.
+        </mat-error>
+      </div>
+    </div> -->
+    <button mat-flat-button color="primary" (click)="handleSignUpButtonClick()">
+      Sign Up
+    </button>
+  </form>
+</app-container>
