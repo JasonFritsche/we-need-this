@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Login } from 'src/app/store/user/user.actions';
-import { IUser } from 'src/app/models/user';
+import { IEmailUser } from 'src/app/models/user';
 import { IUserState } from 'src/app/store/user/user.reducers';
 import * as fromUserSelectors from 'src/app/store/user/user.selectors';
 import { Observable } from 'rxjs';
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   handleLoginButtonClick() {
     console.log('clicked login btn');
-    const user: IUser = { username: 'gene' };
+    const user: IEmailUser = { email:'test@test.com', password: '123456' };
     this.userStore.dispatch(Login({ payload: user }));
   }
 }

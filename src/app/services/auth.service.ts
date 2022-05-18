@@ -9,6 +9,8 @@ export class AuthService {
 
   // Sign up with email/password
   SignUp(email: string, password: string) {
+    console.log("email", email)
+    console.log("password", password)
     return this.angularFireAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {

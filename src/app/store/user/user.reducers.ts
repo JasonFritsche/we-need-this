@@ -1,15 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUser } from 'src/app/models/user';
-import { Login, LoginError, LoginSuccess } from './user.actions';
+import { IEmailUser } from 'src/app/models/user';
+import { Login, LoginError, LoginSuccess, SignUp, SignUpSuccess, SignUpError } from './user.actions';
 export interface IUserState {
-  user: IUser;
+  user: IEmailUser;
   hasError: boolean;
   isLoggedIn: boolean;
   isLoading: boolean;
 }
 
 export const UserState: IUserState = {
-  user: {} as IUser,
+  user: {} as IEmailUser,
   hasError: false,
   isLoggedIn: false,
   isLoading: false,
@@ -31,6 +31,20 @@ export const userReducer = createReducer(
   on(LoginError, (state, props) => ({
     ...state,
     ...props,
+    isLoading: false,
+    hasError: true,
+  })),
+  on(SignUp, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(SignUpSuccess, (state) => ({
+    ...state,
+    isLoading: false,
+    isLoggedIn: true,
+  })),
+  on(SignUpError, (state) => ({
+    ...state,
     isLoading: false,
     hasError: true,
   }))
