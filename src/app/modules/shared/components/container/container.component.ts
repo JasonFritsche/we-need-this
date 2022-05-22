@@ -3,17 +3,14 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss']
+  styleUrls: ['./container.component.scss'],
 })
 export class ContainerComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input() containerStyle: Record<string, string> = {
-    'width': '50vw'
+    // pass in styles from parent
   };
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

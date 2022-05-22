@@ -1,0 +1,9 @@
+<div class="container">
+  <mat-icon
+    [ngClass]="isValid ? 'valid' : 'warn'"
+    [svgIcon]="isValid ? 'check-circle' : 'alert-circle'"
+  ></mat-icon>
+  <small [ngClass]="isValid ? 'valid' : 'warn'">
+    <ng-content></ng-content>
+  </small>
+</div>
