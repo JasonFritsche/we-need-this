@@ -1,0 +1,94 @@
+<app-container>
+  <form [formGroup]="signUpForm" class="flex-column">
+    <!-- START EMAIL FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        (focus)="isEmailFocused = true"
+        (blur)="isEmailFocused = false"
+      />
+    </mat-form-field>
+    <div *ngIf="isEmailFocused" class="password-field-validators">
+      <app-field-validation-indicator [isValid]="emailValidation.isValid">
+        Provide a valid email address
+      </app-field-validation-indicator>
+    </div>
+    <!-- END EMAIL FORM FIELD -->
+    <!-- START PASSWORD FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="passwordVisibility"
+        (focus)="isPasswordFocused = true"
+        (blur)="isPasswordFocused = false"
+      />
+      <mat-icon
+        [svgIcon]="passwordVisibilityIcon"
+        (click)="togglePasswordVisibilty($event, 'password')"
+        matSuffix
+        class="password-visibility-icon"
+      ></mat-icon>
+    </mat-form-field>
+    <!-- START PASSWORD VALIDATION -->
+    <div *ngIf="isPasswordFocused" class="password-field-validators">
+      <app-field-validation-indicator
+        [isValid]="passwordValidation.hasMinlength"
+      >
+        At least eight characters long
+      </app-field-validation-indicator>
+      <app-field-validation-indicator [isValid]="passwordValidation.hasNumber">
+        At least one number
+      </app-field-validation-indicator>
+      <app-field-validation-indicator [isValid]="passwordValidation.hasUpper">
+        At least one uppercase letter
+      </app-field-validation-indicator>
+      <app-field-validation-indicator [isValid]="passwordValidation.hasLower">
+        At least one lowercase letter
+      </app-field-validation-indicator>
+      <app-field-validation-indicator
+        [isValid]="passwordValidation.hasSpecialCharacter"
+      >
+        At least one special character
+      </app-field-validation-indicator>
+    </div>
+    <!-- END PASSWORD VALIDATION -->
+    <!-- END PASSWORD FORM FIELD -->
+    <!-- START VERIFY PASSWORD FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Verify Password</mat-label>
+      <input
+        formControlName="verifyPassword"
+        matInput
+        [type]="verifyPasswordVisibility"
+        (focus)="isVerifyPasswordFocused = true"
+        (blur)="isVerifyPasswordFocused = false"
+      />
+      <mat-icon
+        [svgIcon]="verifyPasswordVisibilityIcon"
+        (click)="togglePasswordVisibilty($event, 'verifyPassword')"
+        matSuffix
+        class="password-visibility-icon"
+      ></mat-icon>
+    </mat-form-field>
+    <div *ngIf="isVerifyPasswordFocused" class="password-field-validators">
+      <app-field-validation-indicator
+        [isValid]="verifyPasswordValidation.isVerified"
+      >
+        Verify password
+      </app-field-validation-indicator>
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="handleSignUpButtonClick()"
+      [disabled]="signUpForm.invalid"
+    >
+      <mat-icon svgIcon="lock-outline"></mat-icon>
+      Create Account
+    </button>
+  </form>
+</app-container>
