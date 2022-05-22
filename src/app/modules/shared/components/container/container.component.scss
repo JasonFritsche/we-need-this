@@ -1,8 +1,13 @@
 @use "@angular/material" as mat;
+@import "breakpoint";
 
 .container {
   padding: 1.1rem;
   border-radius: 5px;
+  width: 90vw;
+  @include for-tablet-landscape-up {
+    width: 50vw;
+  }
 }
 
 .elevation {
