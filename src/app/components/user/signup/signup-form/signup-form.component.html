@@ -27,7 +27,7 @@
         (blur)="isPasswordFocused = false"
       />
       <mat-icon
-        [svgIcon]="passwordVisibilityIcon"
+        svgIcon="{{ passwordVisibilityIcon }}"
         (click)="togglePasswordVisibilty($event, 'password')"
         matSuffix
         class="password-visibility-icon"
@@ -68,7 +68,7 @@
         (blur)="isVerifyPasswordFocused = false"
       />
       <mat-icon
-        [svgIcon]="verifyPasswordVisibilityIcon"
+        svgIcon="{{ verifyPasswordVisibilityIcon }}"
         (click)="togglePasswordVisibilty($event, 'verifyPassword')"
         matSuffix
         class="password-visibility-icon"
