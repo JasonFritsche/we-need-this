@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container flex-row items-center">
   <mat-icon
     [ngClass]="isValid ? 'valid' : 'warn'"
-    [svgIcon]="isValid ? 'check-circle' : 'alert-circle'"
+    svgIcon="{{ isValid ? 'check-circle' : 'circle-medium' }}"
   ></mat-icon>
   <small [ngClass]="isValid ? 'valid' : 'warn'">
     <ng-content></ng-content>
