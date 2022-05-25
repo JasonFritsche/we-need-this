@@ -27,15 +27,18 @@ export class UserEffects {
   );
 
   userSignUp$ = createEffect(() =>
-  this.actions.pipe(
-    ofType(UserActions.SignUp),
-    switchMap((action) => 
-      from(this.authService.SignUp(action.payload.email, action.payload.password)).pipe(
-        map(() => UserActions.SignUpSuccess({payload: action.payload})),
-        catchError(err => of(UserActions.SignUpError(err.message)))
+    this.actions.pipe(
+      ofType(UserActions.SignUp),
+      switchMap((action) =>
+        from(
+          this.authService.signUp(action.payload.email, action.payload.password)
+        ).pipe(
+          map(() => UserActions.SignUpSuccess({ payload: action.payload })),
+          catchError((err) => of(UserActions.SignUpError(err.message)))
+        )
       )
     )
-  ));
+  );
 
   userSignUpSuccess$ = createEffect(
     () =>
@@ -46,5 +49,9 @@ export class UserEffects {
     { dispatch: false }
   );
 
-  constructor(private actions: Actions, private router: Router, private authService: AuthService) {}
+  constructor(
+    private actions: Actions,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 }

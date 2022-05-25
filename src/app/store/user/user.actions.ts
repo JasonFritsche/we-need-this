@@ -8,9 +8,13 @@ export enum UserActionsEnum {
   SIGNUP = '[User] SIGNUP',
   SIGNUP_SUCCESS = '[User] SIGNUP Success',
   SIGNUP_ERROR = '[User] SIGNUP Error',
+  SIGNOUT = '[User] SIGNOUT',
 }
 
-export const Login = createAction('[User] LOGIN', props<{ payload: IEmailUser }>());
+export const Login = createAction(
+  '[User] LOGIN',
+  props<{ payload: IEmailUser }>()
+);
 
 export const LoginSuccess = createAction(
   '[User] LOGIN Success',
@@ -22,7 +26,10 @@ export const LoginError = createAction(
   props<{ payload: string }>()
 );
 
-export const SignUp = createAction('[User] SIGNUP', props<{ payload: IEmailUser }>());
+export const SignUp = createAction(
+  '[User] SIGNUP',
+  props<{ payload: IEmailUser }>()
+);
 
 export const SignUpSuccess = createAction(
   '[User] SIGNUP Success',
@@ -33,3 +40,4 @@ export const SignUpError = createAction(
   '[User] SIGNUP Error',
   props<{ payload: string }>()
 );
+export const SignOut = createAction('[User] SIGNOUT');
