@@ -1,0 +1,30 @@
+<app-container>
+  <form [formGroup]="loginForm" class="flex-column">
+    <!-- START EMAIL FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput />
+    </mat-form-field>
+    <!-- END EMAIL FORM FIELD -->
+    <!-- START PASSWORD FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput [type]="passwordVisibility" />
+      <mat-icon
+        svgIcon="{{ passwordVisibilityIcon }}"
+        (click)="togglePasswordVisibilty($event)"
+        matSuffix
+        class="password-visibility-icon"
+      ></mat-icon>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="handleLoginButtonClick()"
+      [disabled]="loginForm.invalid"
+    >
+      <mat-icon svgIcon="lock-outline"></mat-icon>
+      Login
+    </button>
+  </form>
+</app-container>

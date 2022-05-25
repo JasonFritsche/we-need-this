@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { userReducer } from './store/user/user.reducers';
 import { UserEffects } from './store/user/user.effects';
 import { SignupFormComponent } from './components/user/signup/signup-form/signup-form.component';
+import { LoginFormComponent } from './components/user/login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SignupFormComponent } from './components/user/signup/signup-form/signup
     LoginComponent,
     SignupComponent,
     SignupFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
