@@ -49,6 +49,27 @@ export class UserEffects {
     { dispatch: false }
   );
 
+  userSignOutSuccess$ = createEffect(
+    () =>
+      this.actions.pipe(
+        ofType(UserActions.SignOutSuccess),
+        tap(() => this.router.navigate(['/login']))
+      ),
+    { dispatch: false }
+  );
+
+  userSignOut$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(UserActions.SignOut),
+      switchMap((action) =>
+        from(this.authService.signOut()).pipe(
+          map(() => UserActions.SignOutSuccess()),
+          catchError((err) => of(UserActions.SignOutError()))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private router: Router,
