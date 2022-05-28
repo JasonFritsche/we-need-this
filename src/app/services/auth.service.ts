@@ -9,13 +9,24 @@ export class AuthService {
 
   // Sign up with email/password
   signUp(email: string, password: string) {
-    console.log('email', email);
-    console.log('password', password);
     return this.angularFireAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result);
         this.sendVerificationMail(); // Sending email verification notification, when new user registers
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
+
+  // Sign Out
+  signOut() {
+    return this.angularFireAuth
+      .signOut()
+      .then((result) => {
+        console.log(result);
+        return result;
       })
       .catch((error) => {
         window.alert(error.message);

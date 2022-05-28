@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLoginButtonClick() {
-    console.log('clicked login btn');
-    const user: IEmailUser = { email:'test@test.com', password: '123456' };
+    const user: IEmailUser = { email: 'test@test.com', password: '123456' };
     this.userStore.dispatch(Login({ payload: user }));
   }
 }

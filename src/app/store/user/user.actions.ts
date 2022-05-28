@@ -9,6 +9,8 @@ export enum UserActionsEnum {
   SIGNUP_SUCCESS = '[User] SIGNUP Success',
   SIGNUP_ERROR = '[User] SIGNUP Error',
   SIGNOUT = '[User] SIGNOUT',
+  SIGNOUT_SUCCESS = '[User] SIGNOUT Success',
+  SIGNOUT_ERROR = '[User] SIGNOUT Error',
 }
 
 export const Login = createAction(
@@ -41,3 +43,5 @@ export const SignUpError = createAction(
   props<{ payload: string }>()
 );
 export const SignOut = createAction('[User] SIGNOUT');
+export const SignOutSuccess = createAction('[User] SIGNOUT Success');
+export const SignOutError = createAction('[User] SIGNOUT Error');

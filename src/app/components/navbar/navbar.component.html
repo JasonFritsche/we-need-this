@@ -1,3 +1,20 @@
 <mat-toolbar color="primary">
   <span>My Application</span>
+  <div class="space-please"></div>
+  <div>
+    <button
+      *ngIf="isUserLoggedIn$ | async"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon svgIcon="account-circle"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="handleSignOutClick()">
+        <mat-icon svgIcon="exit-to-app"></mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
