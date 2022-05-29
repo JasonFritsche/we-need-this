@@ -46,8 +46,9 @@ export const userReducer = createReducer(
     ...state,
     isLoading: true,
   })),
-  on(SignUpSuccess, (state) => ({
+  on(SignUpSuccess, (state, props) => ({
     ...state,
+    user: props.payload,
     isLoading: false,
     isLoggedIn: true,
   })),
