@@ -31,7 +31,11 @@ export class UserEffects {
       ofType(UserActions.SignUp),
       switchMap((action) =>
         from(
-          this.authService.signUp(action.payload.email, action.payload.password)
+          this.authService.signUp(
+            action.payload.email,
+            action.payload.password,
+            action.payload.username ?? ''
+          )
         ).pipe(
           map(() => UserActions.SignUpSuccess({ payload: action.payload })),
           catchError((err) => of(UserActions.SignUpError(err.message)))

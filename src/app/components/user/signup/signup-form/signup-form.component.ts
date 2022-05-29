@@ -24,10 +24,15 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   public isEmailFocused = false;
+  public isUsernameFocused = false;
   public isPasswordFocused = false;
   public isVerifyPasswordFocused = false;
 
   public emailValidation = {
+    isValid: false,
+  };
+
+  public usernameValidation = {
     isValid: false,
   };
 
@@ -111,6 +116,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   public signUpForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required, Validators.minLength(5)]],
     password: [
       '',
       [
@@ -127,6 +133,16 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit(): void {
+    this.subscriptions.push(
+      this.form['username'].valueChanges.subscribe(() => {
+        if (this.form['username'].errors) {
+          this.usernameValidation.isValid = false;
+        } else {
+          this.usernameValidation.isValid = true;
+        }
+      })
+    );
+
     this.subscriptions.push(
       this.form['email'].valueChanges.subscribe(() => {
         if (this.form['email'].errors) {

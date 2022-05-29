@@ -16,6 +16,21 @@
       </app-field-validation-indicator>
     </div>
     <!-- END EMAIL FORM FIELD -->
+    <!-- START EMAIL FORM FIELD -->
+    <mat-form-field appearance="outline" class="mat-form-field-no-padding">
+      <mat-label>Username</mat-label>
+      <input
+        formControlName="username"
+        matInput
+        (focus)="isUsernameFocused = true"
+        (blur)="isUsernameFocused = false"
+      />
+    </mat-form-field>
+    <div *ngIf="isUsernameFocused" class="password-field-validators">
+      <app-field-validation-indicator [isValid]="usernameValidation.isValid">
+        Username at least five characters long
+      </app-field-validation-indicator>
+    </div>
     <!-- START PASSWORD FORM FIELD -->
     <mat-form-field appearance="outline" class="mat-form-field-no-padding">
       <mat-label>Password</mat-label>
